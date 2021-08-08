@@ -1,11 +1,20 @@
-
 from django.shortcuts import render
-from .models import Corretora
 from .tryd import context_init
-# Create your views here.
+import pickle
+from rest_framework import status
+from django.http.response import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
-    corretoras = Corretora.objects.order_by('id')
-    context = context_init()
-    return render(request, 'marketdata/index.html', context)
+    return render(request, 'marketdata/index.html', context_init())
+
+
+@csrf_exempt
+def state_att(request):
+    if request.method == 'POST':
+        data = request.POST["ativo"]
+        print(data)
+        return JsonResponse(None, status=status.HTTP_201_CREATED)
+    else:
+        return JsonResponse(None, status=status.HTTP_400_BAD_REQUEST)

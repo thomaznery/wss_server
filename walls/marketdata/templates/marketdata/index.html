@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-</nav>
 
 <div class="container-fluid">  
     <div class='row'>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <table class="table table-sm table-borderless">
                 <thead>
                   <tr>
@@ -26,16 +23,31 @@
                 </tbody>
               </table>
         </div>
-        <div class="col-sm-4">Noticias</div>
+        <div class="col-sm-3">Noticias</div>
     </div>
     <div class='row'>
-        <div class="col-sm">
+        <div class="col-sm-9">
           <div class="row">
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">IND</h5>
-                  <p class="card-text">Implementing list os properties</p>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Dados de hoje:</th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Maior Agressor do dia[Compra]</th>
+                        <td>Bradesco / 220 mil mini contratos</td>                        
+                      </tr>                      
+                      <tr>
+                        <td colspan="2">Larry the Bird</td>                        
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -43,15 +55,40 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">WIN</h5>
-                  <p class="card-text">Implementing list os properties</p>                  
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Dados de hoje:</th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Maior Agressor do dia[Compra]</th>
+                        <td>Bradesco / 220 mil mini contratos</td>                        
+                      </tr>                      
+                      <tr>
+                        <td colspan="2">Larry the Bird</td>                        
+                      </tr>
+                    </tbody>
+                  </table>                  
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm">
-          
-            chat
+        <div class="col-sm-3">
+          {% if corretoras %}
+          <div class="container">
+            <ul>
+              {% for corretora in corretoras %}
+                <li>{{ corretora.id }}{{ corretora.nome}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% else %}
+              <p>Sem corretoras cadastradas.</p>
+          {% endif %}
+      
 
         </div>
         
